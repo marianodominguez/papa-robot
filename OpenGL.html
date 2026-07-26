@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>December Adventure</title>
+    <title>OpenGL Adventures</title>
     <style>
         :root {
             color-scheme: dark;
@@ -161,54 +161,66 @@
 <body>
     <header class="site-header">
         <a class="brand" href="index.html">Papá Robot</a>
-        <nav class="site-nav" aria-label="Primary navigation">
+        <nav class="site-nav" aria-label="Primary">
             <a href="index.html">Home</a>
-            <a href="Atari 3D graphics.html">Atari 3D</a>
+            <a href="Atari 3D graphics.html">Atari 3D graphics</a>
             <a href="Zx Spectrum Bot.html">ZX Spectrum</a>
             <a href="Bataroo.html">Bataroo</a>
             <a href="Atari8bit bot mastodon.html">Mastodon</a>
-            <a href="December Adventure.html">Adventure</a>
-            <a href="Tacobot Online.html">Tacobot Online</a>
-            <a href="Raspberry pi 5.html">Raspberry Pi</a>
+            <a href="OpenGL.html">OpenGL</a>
+            <a href="more_3d_graphics.html">More 3D graphics</a>
         </nav>
     </header>
+
     <main class="layout">
         <aside class="index-card" aria-label="Page index">
             <h2>Index</h2>
             <ul>
-                <li><a href="#intro">Intro</a></li>
-                <li><a href="#challenge">Challenge</a></li>
-                <li><a href="#daily-log">Daily log</a></li>
-                <li><a href="#wrapup">Wrap-up</a></li>
+                <li><a href="#basic">Basic OpenGL</a></li>
+                <li><a href="#teapot">Teapot wireframe</a></li>
+                <li><a href="#reflection">Reflection model</a></li>
+                <li><a href="#texture">Texture mapping</a></li>
             </ul>
         </aside>
+
         <article class="content-card">
-            <h1>December Adventure</h1>
-            <p class="lead">A clean, sample page for the December Adventure log built with the same layout and
-                navigation as the Atari page.</p>
-            <section id="intro" class="entry">
-                <h2>Intro</h2>
-                <p>This page is a place for daily notes, discoveries, and progress updates from December-themed projects
-                    and experiments.</p>
+            <h1>OpenGL Adventures</h1>
+            <p class="lead">Notes and demos exploring simple OpenGL programs: cubes, teapots, lighting and textures.</p>
+
+            <section id="basic" class="entry">
+                <h2>Basic OpenGL example</h2>
+                <p>The most basic example: a cube rendered from arrays of vertices and normals.</p>
+                <p><a href="https://github.com/marianodominguez/3d_graphics_prog/blob/main/gl/src/cube.c" target="_blank" rel="noreferrer">Cube source on GitHub</a></p>
+                <div class="media-grid">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/xTBzC8BHPn8?si=RyrjV4WQsVAT5eoS" title="Cube demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
             </section>
-            <section id="challenge" class="entry">
-                <h2>Challenge</h2>
-                <p>Track progress through each day of the challenge, including code experiments, retro hacks, and
-                    community updates.</p>
+
+            <section id="teapot" class="entry">
+                <h2>Teapot wireframe</h2>
+                <p>The Utah teapot reappears: model loading with precalculated normals and an initial diffuse lighting shader.</p>
+                <p><a href="https://github.com/marianodominguez/3d_graphics_prog/blob/main/gl/src/teapot_diffuse.c" target="_blank" rel="noreferrer">Teapot diffuse shader</a></p>
+                <div class="media-grid">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/PffgT-BnbgI?si=OEjMEO5VrLJdBQS-" title="Teapot diffuse" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
             </section>
-            <section id="daily-log" class="entry">
-                <h2>Daily log</h2>
-                <ul>
-                    <li>Day 1: Setup and project planning.</li>
-                    <li>Day 2: First experiments and code snapshots.</li>
-                    <li>Day 3: Progress check and reflections.</li>
-                </ul>
+
+            <section id="reflection" class="entry">
+                <h2>Reflection model</h2>
+                <p>Adding reflection terms to the light model to simulate specular highlights and improve material appearance.</p>
+                <div class="media-grid">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/E7_sGBzSJqs?si=-6OuCZJZ9rsDzE-T" title="Reflection demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
             </section>
-            <section id="wrapup" class="entry">
-                <h2>Wrap-up</h2>
-                <p>Reuse this section for final thoughts, lessons learned, and links to the work created during the
-                    challenge.</p>
+
+            <section id="texture" class="entry">
+                <h2>Texture mapping</h2>
+                <p>Applying simple textures; triangulation limitations are visible and next steps include Bezier interpolation for smoother surfaces.</p>
+                <div class="media-grid">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/VBRxtj5fWg0?si=Sjkj4h11kM0fX5iX" title="Texture mapping" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
             </section>
+
             <footer>Back to <a href="index.html">the main page</a>.</footer>
         </article>
     </main>

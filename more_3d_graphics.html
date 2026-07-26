@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>More 3D Graphics</title>
+    <style>
+        :root {
+            color-scheme: dark;
+            --bg: #07111f;
+            --panel: #101b30;
+            --panel-strong: #16253d;
+            --text: #f5f7ff;
+            --muted: #a6b0c5;
+            --accent: #64d7ff;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, "Segoe UI", Roboto, sans-serif;
+            background: linear-gradient(135deg, #07111f, #14233b 70%, #07111f);
+            color: var(--text);
+        }
+
+        .site-header {
+            background: rgba(7, 17, 31, 0.95);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .site-header a {
+            color: var(--text);
+            text-decoration: none
+        }
+
+        .brand {
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase
+        }
+
+        .site-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px
+        }
+
+        .site-nav a {
+            color: var(--muted);
+            padding: 6px 10px;
+            border-radius: 999px
+        }
+
+        .site-nav a:hover {
+            color: var(--text);
+            background: rgba(255, 255, 255, 0.08)
+        }
+
+        .layout {
+            display: grid;
+            grid-template-columns: 240px minmax(0, 1fr);
+            gap: 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 24px
+        }
+
+        .index-card,
+        .content-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 18px;
+            padding: 20px;
+            box-shadow: 0 14px 36px rgba(0, 0, 0, 0.18)
+        }
+
+        .index-card h2 {
+            margin-top: 0;
+            font-size: 1.1rem
+        }
+
+        .index-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            gap: 8px
+        }
+
+        .index-card a {
+            color: var(--accent);
+            text-decoration: none
+        }
+
+        .content-card h1 {
+            margin-top: 0;
+            margin-bottom: 8px;
+            font-size: 2rem
+        }
+
+        .lead {
+            color: var(--muted);
+            margin-top: 0;
+            margin-bottom: 24px
+        }
+
+        .entry {
+            margin-bottom: 28px
+        }
+
+        .media-grid {
+            display: grid;
+            gap: 16px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            margin-top: 12px
+        }
+
+        img,
+        iframe {
+            width: 100%;
+            border-radius: 12px;
+            border: 0;
+            background: #0c1426
+        }
+
+        .note {
+            color: var(--muted)
+        }
+
+        footer {
+            margin-top: 24px;
+            color: var(--muted);
+            font-size: 0.95rem
+        }
+
+        @media (max-width:840px) {
+            .layout {
+                grid-template-columns: 1fr
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <a class="brand" href="index.html">Papá Robot</a>
+        <nav class="site-nav" aria-label="Primary">
+            <a href="index.html">Home</a>
+            <a href="Atari 3D graphics.html">Atari 3D graphics</a>
+            <a href="Zx Spectrum Bot.html">ZX Spectrum</a>
+            <a href="Bataroo.html">Bataroo</a>
+            <a href="Atari8bit bot mastodon.html">Mastodon</a>
+            <a href="OpenGL.html">OpenGL</a>
+            <a href="more_3d_graphics.html">More 3D graphics</a>
+        </nav>
+    </header>
+
+    <main class="layout">
+        <aside class="index-card" aria-label="Page index">
+            <h2>Index</h2>
+            <ul>
+                <li><a href="#intro">Intro</a></li>
+                <li><a href="#face-culling">Face culling</a></li>
+                <li><a href="#light">Light model</a></li>
+                <li><a href="#shading">Shading</a></li>
+                <li><a href="#zbuffer">Z-buffer</a></li>
+                <li><a href="#rendering">Rendering</a></li>
+            </ul>
+        </aside>
+
+        <article class="content-card">
+            <h1>More 3D graphics</h1>
+            <p class="lead">Progress notes on advancing the teapot rendering pipeline: normals, culling, lighting and
+                shading techniques.</p>
+
+            <section id="intro" class="entry">
+                <h2>Introduction</h2>
+                <p>After the teapot wireframe, the next steps were focused on improving surface handling and lighting.
+                    See the teapot source for the progress stages.</p>
+                <p><a href="https://github.com/marianodominguez/3d_graphics_prog/blob/main/teapot/src/teapot_03.c"
+                        target="_blank" rel="noreferrer">Teapot: patch & progress</a></p>
+                <div class="media-grid">
+                    <img src="More 3D graphics/f4ccd38bbdb7367764fcd1287464b0ce.jpg" alt="Teapot wireframe" />
+                </div>
+            </section>
+
+            <section id="face-culling" class="entry">
+                <h2>Face culling</h2>
+                <p>With Bezier patches we calculate per-vertex normals using:</p>
+                <p class="note">n = normalize(cross(v0, v1)); where <em>v0</em> and <em>v1</em> are the triangle sides.
+                </p>
+                <p>This removes many back faces, although additional logic is needed to handle complex patches.</p>
+                <p><a href="https://github.com/marianodominguez/3d_graphics_prog/blob/main/teapot/src/teapot_04.c"
+                        target="_blank" rel="noreferrer">Face culling code</a></p>
+            </section>
+
+            <section id="light" class="entry">
+                <h2>Light model</h2>
+                <p>Applying a light model per-face yields flat shading. The next steps interpolate normals for smoother
+                    shading models.</p>
+                <div class="media-grid">
+                    <img src="More 3D graphics/51a3ae85967a7c0a600c9c3f01b19d78.jpg" alt="Flat shading example" />
+                </div>
+                <p><a href="https://github.com/marianodominguez/3d_graphics_prog/blob/main/teapot/src/teapot_06.c"
+                        target="_blank" rel="noreferrer">Light model source</a></p>
+            </section>
+
+            <section id="shading" class="entry">
+                <h2>Shading</h2>
+                <p>Interpolating vertex values produces Gouraud shading; interpolating normals enables Phong shading for
+                    more realistic highlights.</p>
+                <div class="media-grid">
+                    <img src="More 3D graphics/c3498a9c22f74ce1aa6e0b64c17dcf73.jpg" alt="Shading example" />
+                </div>
+                <p><a href="https://github.com/marianodominguez/3d_graphics_prog/blob/main/teapot/src/teapot_07.c"
+                        target="_blank" rel="noreferrer">Shading experiments</a></p>
+            </section>
+
+            <section id="zbuffer" class="entry">
+                <h2>Z-buffer</h2>
+                <p>After implementing a Z-buffer the model correctly displays occlusion: the teapot lid and handle
+                    render as expected.</p>
+                <div class="media-grid">
+                    <img src="More 3D graphics/e18ef8362c1d472ec5f873f0cd31b2b4.jpg" alt="Z-buffer result" />
+                </div>
+                <p><a href="https://github.com/marianodominguez/3d_graphics_prog/blob/main/teapot/src/teapot_08.c"
+                        target="_blank" rel="noreferrer">Z-buffer code</a></p>
+            </section>
+
+            <section id="rendering" class="entry">
+                <h2>Rendering</h2>
+                <p>Final rendering includes textures and more complex lighting; the video below shows the textured
+                    teapot with updated lighting.</p>
+                <div class="media-grid">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/Zbr7b93vSPw?si=oxAmzP32fJ0ywmza"
+                        title="Teapot rendering" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </section>
+
+            <footer>Back to <a href="index.html">the main page</a>.</footer>
+        </article>
+    </main>
+</body>
+
+</html>
