@@ -189,6 +189,11 @@
         <li><a href="#dec5">5-Dec</a></li>
         <li><a href="#dec6">6-7 Dec</a></li>
         <li><a href="#dec8">8 Dec</a></li>
+        <li><a href="#dec9">9-10 Dec</a></li>
+        <li><a href="#dec11">11 Dec</a></li>
+        <li><a href="#dec12">12-13 Dec</a></li>
+        <li><a href="#dec14">14-15 Dec</a></li>
+        <li><a href="#18-19 dec">18-19 Dec</a></li>
       </ul>
     </aside>
 
@@ -259,7 +264,7 @@
         <h3>8 Dec</h3>
         <p>Implemented a nice little routine to clear the screen. now use the wam routines to speed up the drawing</p>
         <div class="media-grid">
-          <img src="Atari 3D graphics/bc778001caf4f48ac6e1df14f4af6485.jpg" alt="Rotating cube experiment" />
+          <img src="Atari 3D graphics/589d7515fc75d82788d80d320be377f6.jpg" alt="Rotating cube experiment" />
           <img src="Atari 3D graphics/2f29f530f1c8959aeda91325562a67e6.jpg" alt="Another rotating cube experiment" />
         </div>
 
@@ -268,10 +273,24 @@
       <section id="dec9" class="entry">
         <h3>9-10 Dec</h3>
         <p>Implemented fast pixel routines. for some reason multiplying by 40 is not working</p>
+        <div class="media-grid">
+          <img src="Atari 3D graphics/9e1f0c7d8b5a4f6e2c1b8f3e4a5d6c7b.jpg" alt="Fast pixel routines" />
+          <img src="Atari 3D graphics/db8eef29fd2b28b3f9cdd776b4c4f772.jpg" alt="Resulting image" />
+        </div>
       </section>
+
       <section id="dec11" class="entry">
         <h3>11 Dec</h3>
         <p>Implemented putpixel and line in c, as base to troubleshoot. not too much difference in performance.</p>
+        <div class="media-grid">
+          <img src="Atari 3D graphics/cf829380c2017cbc5585cd7db6aca25a.jpg" alt="Line C routine" />
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/eh75ZkeXOkY?si=Ys3SV1Mc7OGHQanm"
+            title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen></iframe>
+        </div>
+
+
       </section>
 
       <section id="dec12" class="entry">
@@ -279,7 +298,11 @@
         <p>So much going on that I could not update. Adapting the putpixel routine to 2 bytes included a lot of
           debugging. I have a set pixel directly to video memory.</p>
 
-        Dealing with the arithmetic was tricky. ended up rewriting the y*40 routine.
+        <div class="media-grid">
+          <img src="Atari 3D graphics/a3a89c0cc0c3481797024b03c94b4a7b.jpg" alt="Fast pixel routines" />
+        </div>
+
+        <p>Dealing with the arithmetic was tricky. ended up rewriting the y*40 routine.</p>
 
       </section>
 
@@ -287,25 +310,71 @@
         <h3>14-15 Dec</h3>
         <p>Implemented a fast line routine. I have a set pixel directly to video memory.</p>
 
-        Next step was to write the line in assembler. found a couple of routines already made
-        here: https://forums.atariage.com/topic/231690-known-fast-line-algorithms/
-        tried to port and integrate dr Sid implementation (in thread). moving from mad assembler to cc65 was not too
-        bad.
-        but not sure about the macros.
+        <p> step was to write the line in assembler. found a couple of routines already made
+          <a href="https://forums.atariage.com/topic/231690-known-fast-line-algorithms/">here:
+            https://forums.atariage.com/topic/231690-known-fast-line-algorithms/ </a>
+        </p>
+        <p>
+          tried to port and integrate dr Sid implementation (in thread). moving from mad assembler to cc65 was not too
+          bad.
+        </p>
+        <p></p>
+
+        <div class="media-grid">
+          <img src="Atari 3D graphics/c3dadf443fca101e96f59ac6bb11cb8c.jpg" alt="Y*40 result" />
+        </div>
 
 
-        So mostly works, however , resolution and x coordinates are off. Rightmost triamgle should be in the middle
+        <p>but not sure about the macros.
+          So mostly works, however , resolution and x coordinates are off. Rightmost triamgle should be in the middle
+        </p>
+        <p>And it worked !</p>
 
-        And it worked !
 
-        Next step : double buffer.
+        <div class="media-grid">
+          <img src="Atari 3D graphics/e921cd59948460e4e86f0f77d1913e5e.jpg" alt="Y*40 result" />
+        </div>
 
+        <p>Next step : double buffer.</p>
+
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/UWCHQ6iw_j4?si=vhncE8runEGuEBkn"
+          title="YouTube video player" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+        <p> Compare with the BASIC implementation speed
+        </p>
+
+
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/uKd1zXYNoe4?si=uM7ffKykdZLP9rov"
+          title="YouTube video player" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       </section>
 
+      <section id="dec15" class="entry">
+        <h3>16-17 Dec</h3>
+        <p>Trying to make page flipping work with mode 8
+          it seems display list requires more work to cross a 4k border. So I have buffer and a half.</p>
 
+        <div class="media-grid">
+          <iframe src="https://mastodon.cloud/@papa_robot/111598858906734654/embed" class="mastodon-embed"
+            style="max-width: 100%; border: 0" width="800" height="800" allowfullscreen="allowfullscreen"></iframe>
+          <script src="https://mastodon.cloud/embed.js" async="async"></script>
+        </div>
+      </section>
 
+      <section id="18-19 dec" class="entry">
+        <p>
+          Gap issue fixed and double buffer working, still had to move around some memory align manually.
+        </p>
 
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/gMwNhtPYFNE?si=qGqaJEAYPiacVv20"
+          title="YouTube video player" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
+      </section>
 
       <footer>Back to <a href="index.html">the main landing page</a>.</footer>
       </article>
