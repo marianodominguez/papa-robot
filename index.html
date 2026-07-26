@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Moving Domain</title>
-  <meta name="description" content="Moving Domain is a bold landing page concept for a modern digital launch." />
+  <title>Papá Robot</title>
+  <meta name="description" content="Papá Robot is a blog about retro computing and programming." />
   <style>
     :root {
       color-scheme: dark;
@@ -31,13 +31,50 @@
         radial-gradient(circle at bottom right, rgba(155, 124, 255, 0.24), transparent 30%),
         linear-gradient(135deg, var(--bg), #141b35 65%, #0b1126);
       min-height: 100vh;
-      display: grid;
-      place-items: center;
-      padding: 24px;
+    }
+
+    .site-header {
+      background: rgba(7, 17, 31, 0.95);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 16px 24px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .site-header a {
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .brand {
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .site-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .site-nav a {
+      color: var(--muted);
+      padding: 6px 10px;
+      border-radius: 999px;
+    }
+
+    .site-nav a:hover {
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.08);
     }
 
     main {
       width: min(100%, 1040px);
+      margin: 24px auto;
       background: var(--panel);
       border: 1px solid rgba(255, 255, 255, 0.16);
       backdrop-filter: blur(18px);
@@ -78,6 +115,19 @@
       line-height: 1.7;
       color: var(--muted);
       margin: 0;
+    }
+
+    .hero-list {
+      margin: 24px 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 8px;
+      color: var(--text);
+    }
+
+    .hero-list li {
+      margin-left: 0;
     }
 
     .actions {
@@ -135,6 +185,18 @@
       padding: 14px;
       border-radius: 16px;
       background: rgba(255, 255, 255, 0.06);
+      transition: background 180ms ease, transform 180ms ease;
+    }
+
+    .stats li:hover {
+      background: rgba(255, 255, 255, 0.11);
+      transform: translateY(-2px);
+    }
+
+    .stats a {
+      color: inherit;
+      text-decoration: none;
+      display: block;
     }
 
     .stats strong {
@@ -143,8 +205,14 @@
       margin-bottom: 4px;
     }
 
+    .podcast {
+      padding: 24px;
+      display: grid;
+      gap: 12px;
+    }
+
     footer {
-      padding: 0 48px 32px;
+      padding: 32px 48px;
       color: var(--muted);
       font-size: 0.95rem;
     }
@@ -156,39 +224,80 @@
       }
 
       footer {
-        padding: 0 32px 24px;
+        padding: 24px 32px;
       }
     }
   </style>
 </head>
 
 <body>
+  <header class="site-header">
+    <a class="brand" href="index.html">Papá Robot</a>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a href="index.html">Home</a>
+      <a href="Atari 3D graphics.html">Atari 3D</a>
+      <a href="Zx Spectrum Bot.html">ZX Spectrum</a>
+      <a href="Bataroo.html">Bataroo</a>
+      <a href="Atari8bit bot mastodon.html">Mastodon</a>
+      <a href="December Adventure.html">Adventure</a>
+      <a href="Tacobot Online.html">Tacobot Online</a>
+      <a href="Fujinet server.html">Fujinet</a>
+      <a href="Raspberry pi 5.html">Raspberry Pi</a>
+      <a href="The return of TACOBOT.html">TACOBOT</a>
+    </nav>
+  </header>
+
   <main>
     <section class="hero">
       <div>
-        <span class="eyebrow">● New digital launch</span>
-        <h1>Moving Domain</h1>
+        <span class="eyebrow">● My projects</span>
+        <h1>Papá Robot</h1>
+        <img src="Home/6b0399e81a2d566826d055b931790c85.jpg" alt="8bit Dino"
+          style="width: 100%; max-width: 400px; border-radius: 12px; margin-top: 24px;" />
         <p>
-          A fresh, cinematic landing experience built to welcome new visitors with clarity,
-          momentum, and a sense of motion.
+          Some topics you'll see here
         </p>
-        <div class="actions">
-          <a class="button primary" href="#">Start your move</a>
-          <a class="button secondary" href="#">View details</a>
-        </div>
+        <ul class="hero-list">
+          <li>Atari 8 bit</li>
+          <li>Sinclair ZX Spectrum</li>
+          <li>6502 programming</li>
+          <li>Some devops rants</li>
+          <li>I'm not on Twitter. Follow me on <a href="https://mastodon.social/@paparobot"
+              target="_blank">Mastodon</a>.</li>
+        </ul>
       </div>
 
       <aside class="card" aria-label="Highlights">
-        <p>Built for ambitious ideas, polished launches, and memorable first impressions.</p>
+        <p>Content.</p>
         <ul class="stats">
-          <li><strong>01</strong>Fast setup</li>
-          <li><strong>02</strong>Bold visuals</li>
-          <li><strong>03</strong>Responsive flow</li>
-          <li><strong>04</strong>Ready to ship</li>
+          <li><a href="Atari 3D graphics.html"><strong>01</strong>Atari 3D graphics</a></li>
+          <li><a href="Zx Spectrum Bot.html"><strong>02</strong>ZX Spectrum bot</a></li>
+          <li><a href="The return of TACOBOT.html"><strong>03</strong>The Return of TACOBOT</a></li>
+          <li><a href="Tacobot Online.html"><strong>04</strong>Tacobot Online</a></li>
+          <li><a href="Bataroo.html"><strong>05</strong>Bataroo</a></li>
+          <li><a href="Atari8bit bot mastodon.html"><strong>06</strong>Atari8bit bot mastodon</a></li>
+          <li><a href="Fujinet server.html"><strong>07</strong>Fujinet server</a></li>
+          <li><a href="December Adventure.html"><strong>08</strong>December Adventure</a></li>
+          <li><a href="Raspberry pi 5.html"><strong>09</strong>Raspberry pi 5</a></li>
         </ul>
       </aside>
     </section>
-    <footer>© 2026 Moving Domain</footer>
+
+    <section class="card podcast" aria-label="Podcast">
+      <div>
+        <span class="eyebrow">● Podcast</span>
+        <h2>ANTIC: the atari 8 bit podcast</h2>
+        <p>
+          I got mentioned in ANTIC: the Atari 8 bit podcast!
+        </p>
+      </div>
+      <iframe title="Libsyn Player" style="border: none"
+        src="//html5-player.libsyn.com/embed/episode/id/25992369/height/90/theme/custom/thumbnail/yes/direction/forward/render-playlist/no/custom-color/000000/"
+        height="90" width="100%" scrolling="no" allowfullscreen webkitallowfullscreen mozallowfullscreen
+        oallowfullscreen msallowfullscreen></iframe>
+    </section>
+
+    <footer>© 2026 Papá Robot</footer>
   </main>
 </body>
 
