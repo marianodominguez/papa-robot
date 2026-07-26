@@ -184,28 +184,28 @@
         </aside>
         <article class="content-card">
             <h1>Tacobot Online</h1>
-            <p class="lead">A sample page for Tacobot Online, using the standard site structure for navigation and
-                content organization.</p>
-            <section id="intro" class="entry">
-                <h2>Intro</h2>
-                <p>This page is a placeholder for Tacobot Online status, updates, and online features.</p>
-            </section>
-            <section id="online" class="entry">
-                <h2>Online mode</h2>
-                <p>Describe how Tacobot Online works, where it can be accessed, and what visitors can expect from its
-                    online presence.</p>
-            </section>
-            <section id="status" class="entry">
-                <h2>Status</h2>
-                <ul>
-                    <li>Current availability.</li>
-                    <li>Recent online behavior.</li>
-                    <li>Integration notes.</li>
-                </ul>
-            </section>
             <section id="todo" class="entry">
-                <h2>Next steps</h2>
-                <p>Document future improvements and planned online features for Tacobot.</p>
+
+                <h3>Play Tacobot in browser (WIP)</h3>
+
+                <p></p>
+                Select system/800XL if game does not start
+                <p></p>
+                use arrows to move
+                <p></p>
+                press ENTER for start
+
+                <div style="width:640px;height:480px;max-width:100%">
+                    <div id="game"></div>
+                </div>
+                <script type="text/javascript">
+                    EJS_player = '#game';
+                    EJS_biosUrl = 'https://cdn.jsdelivr.net/gh/marianodominguez/taco-game/dist/ATARIXL.ROM';
+                    EJS_gameUrl = 'https://cdn.jsdelivr.net/gh/marianodominguez/taco-game/dist/tacobot_2.5_b.atr'; // Url to Game rom
+                    EJS_core = 'atari8bit';
+                </script>
+                <script src="https://www.emulatorjs.com/loader.js"></script>
+
             </section>
             <footer>Back to <a href="index.html">the main page</a>.</footer>
         </article>

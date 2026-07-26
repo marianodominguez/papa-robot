@@ -184,48 +184,91 @@
 
     <article class="content-card">
       <h1>ZX Spectrum Bot</h1>
-      <p class="lead">A showcase page for the ZX Spectrum chat bot, with navigation and sample content matching the
-        Atari page design.</p>
+      <p class="lead">A small social bot that turns ZX Spectrum programs into shareable posts, with support for Twitter
+        and Mastodon.</p>
+
+      <img src="Zx Spectrum Bot/08d6bb47bb85343d0dc41a1514aaa597.jpg" alt="ZX Spectrum Bot" width="300" />
 
       <section id="intro" class="entry">
         <h2>Introduction</h2>
-        <p>This page is a landing point for the ZX Spectrum Bot project. It uses the same layout, header, and index
-          system as the Atari 3D graphics page for a consistent experience across the site.</p>
+        <p>This project is a port of the Atari 8-bit bot idea to the ZX Spectrum scene. It brings together an emulator,
+          a BASIC-to-tape workflow, and a publishing backend so that Spectrum programs can be presented as short
+          automated social posts.</p>
       </section>
 
       <section id="overview" class="entry">
         <h2>Bot Overview</h2>
-        <p>The ZX Spectrum Bot is designed to share Spectrum-related projects, updates, and links directly from the
-          site. It is built to be simple, easy to navigate, and consistent with the Papá Robot theme.</p>
+        <p>The ZX Spectrum Bot is designed to run on a Linux machine, typically a Raspberry Pi or similar low-power
+          host. It can launch a Spectrum emulator, generate or load tapes, capture the output, and publish the result
+          through either Twitter or Mastodon.</p>
+
+        <p class="note">
+          Available in mastodon, toot code with #zxspectrumbot and it will reply with a video.
+        </p>
+
+        <h3>Supported directives:</h3>
+
+        <p>
+          <li>{Z} Use Boriel zxbasic</li>
+          <li>{A} Use assembler language</li>
+          <li>{Snn} Record video for nn seconds(20-99)</li>
+          <li>{Bnn} Begin recording after nn seconds</li>
+          <li>{+} Use zxspectrum + emulation</li>
+          <li>{Xnn} Accelerate nn times (1-20)</li>
+        </p>
+        </p>
+
+        <p class="note">
+          Note: this option disables sound and posts result as gif. Use with caution.
+        </p>
+
+        <p>
+          You can also toot a gist raw url with code.
+          example:
+
+        </p>
+
+        <pre>
+         #zxspectrumbot {S32}
+        10 PAPER 0:INK 6:CLS 
+        20 PRINT "HELLO WORLD" 
+        30 GO TO 20 
+      </pre>
+
       </section>
 
       <section id="features" class="entry">
         <h2>Key Features</h2>
         <ul>
-          <li>Clean navigation that matches the rest of the site.</li>
-          <li>Simple, readable content sections for updates and status.</li>
-          <li>Responsive layout with a dedicated index sidebar.</li>
-          <li>Sample media area for Spectrum screenshots or embeds.</li>
+          <li>Ports the idea of an automated retro-computing bot to the ZX Spectrum world.</li>
+          <li>Supports both Twitter and Mastodon backends.</li>
+          <li>Uses the Fuse emulator together with Spectrum ROMs and BASIC tooling.</li>
+          <li>Generates TAP files with tools such as bas2tap and zmakebas.</li>
+          <li>Processes video output with ffmpeg and runs headlessly via Xvfb.</li>
         </ul>
       </section>
 
       <section id="build" class="entry">
         <h2>Build Notes</h2>
-        <p class="note">This sample page can be expanded with real ZX Spectrum bot details, audio embeds, and archive
-          links as the project grows.</p>
-        <div class="media-grid">
-          <img src="https://via.placeholder.com/640x360/0b1221/64d7ff?text=Spectrum+UI"
-            alt="ZX Spectrum interface sample" />
-          <img src="https://via.placeholder.com/640x360/0b1221/64d7ff?text=Bot+Status" alt="Bot status placeholder" />
-        </div>
+        <p class="note">The project is fairly self-contained, but it does require a few dependencies and credentials to
+          publish content properly.</p>
+        <ul>
+          <li>A Twitter or Mastodon account, along with the appropriate API keys.</li>
+          <li>Tweepy or Mastodon.py, with the video-upload capable fork in use for richer posts.</li>
+          <li>Fuse emulator packages, spectrum ROMs, and utilities such as bas2tap and zmakebas.</li>
+          <li>ffmpeg for rendering and processing output, plus an X virtual framebuffer for headless capture.</li>
+        </ul>
       </section>
 
       <section id="links" class="entry">
         <h2>Useful links</h2>
         <ul>
+          <li><a href="https://github.com/marianodominguez/ZxSpectrumBot" target="_blank" rel="noreferrer">Open the
+              GitHub repository</a></li>
+          <li><a href="https://twitter.com/Atari8BitBot" target="_blank" rel="noreferrer">Visit the original Atari 8-bit
+              bot</a></li>
           <li><a href="index.html">Return to the main landing page</a></li>
           <li><a href="Atari 3D graphics.html">View the Atari 3D graphics log</a></li>
-          <li><a href="Bataroo.html">Visit the Bataroo page</a></li>
         </ul>
       </section>
 
