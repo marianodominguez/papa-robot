@@ -176,39 +176,118 @@
         <aside class="index-card" aria-label="Page index">
             <h2>Index</h2>
             <ul>
-                <li><a href="#intro">Intro</a></li>
-                <li><a href="#hardware">Hardware</a></li>
-                <li><a href="#setup">Setup</a></li>
-                <li><a href="#future">Future</a></li>
+                <li><a href="#dec20">20 - Dec</a></li>
+                <li><a href="#dec21">21 - Dec</a></li>
+                <li><a href="#dec22">22 - 23 Dec</a></li>
+                <li><a href="#dec24">26 - 28 Dec</a></li>
+                <li><a href="#dec29">29 - 31 Dec</a></li>
             </ul>
         </aside>
         <article class="content-card">
-            <h1>Raspberry pi 5</h1>
-            <p class="lead">A sample Raspberry Pi 5 page, formatted like the rest of the Papá Robot site with consistent
-                navigation and content sections.</p>
-            <section id="intro" class="entry">
-                <h2>Intro</h2>
-                <p>This page is a placeholder for Raspberry Pi 5 hardware notes, project goals, and integration stories.
+            <h1>My #DecemberAdventure Log</h1>
+
+            <section id="dec20" class="entry">
+                <h3>20 - Dec</h3>
+                <p></p>
+                Ported the code to my Rpi 5. no need for optimizations.
+                Using allegro primitives. it took me around 15 minutes, allegro for line routine and double buffer.
+                <p> </p>
+                <a href="https://github.com/marianodominguez/3d_graphics_prog/blob/main/teapot/src/cube.c">Cube code</a>
+
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/DGE4K2XSWlM?si=DaRNmo_8ts3Qn7g_"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+            </section>
+
+
+            <section id="dec21" class="entry">
+                <h3>21 - Dec</h3>
+                <p></p>
+                Why stopping at a cube? <p></p>
+                Added code to render the Utah teapot model. <p></p>
+
+                <a href="https://github.com/marianodominguez/samples/blob/master/cprog/allegro_pi/src/teapot_01.c">Teapot
+                    code</a>
+
+                <iframe width="560" height="315"
+                    src="https://www.youtube.com/embed/YOKTVWnwNDM?si=gG5WrW33e9But3dI&amp;start=7"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+            </section>
+
+            <section id="dec22" class="entry">
+                <h3>22 - 23 Dec</h3>
+                <p>
+                    working on several strategies to interpolate the model, First tried linear interpolation in the
+                    triangle.
+                    however this is not generating the right subdivision.</p>
+
+                <img src="Raspberry pi 5/5d96375590156999bcad6c0f8a4ee579.jpg" alt="Bezier interpolation"
+                    style="width: 100%; max-width: 400px; border-radius: 12px; margin-top: 24px;" />
+
+
+
+                <img src="Raspberry pi 5/d691b060fe186193d0fde6a92463ac93.jpg" alt="Bezier interpolation"
+                    style="width: 100%; max-width: 400px; border-radius: 12px; margin-top: 24px;" />
+
+            </section>
+
+            <section id="dec24" class="entry">
+                <h3>24 - 25 Dec</h3>
+                <p>
+                    Still working on crazier and crazier approaches.
+                    Tried to use parallelograms, but there is no easy way to delimit them:
                 </p>
+                <img src="Raspberry pi 5/e28730da43b4132c1a18df3933a8d4d2.jpg" alt="Parallelogram interpolation"
+                    style="width: 100%; max-width: 400px; border-radius: 12px; margin-top: 24px;" />
+                <p> they tend to get out of the triangle, giving unexpected results </p>
+
+                <img src="Raspberry pi 5/96205535ee54b05184cb0ee283996ad0.jpg" alt="Parallelogram interpolation"
+                    style="width: 100%; max-width: 400px; border-radius: 12px; margin-top: 24px;" />
+                <img src="Raspberry pi 5/f8925ea6ac7451f82fa17df0a14eb47a.jpg" alt="Parallelogram interpolation"
+                    style="width: 100%; max-width: 400px; border-radius: 12px; margin-top: 24px;" />
+
             </section>
-            <section id="hardware" class="entry">
-                <h2>Hardware</h2>
-                <p>Document the hardware setup, boards used, and any special peripherals or projects connected to the
-                    Raspberry Pi 5.</p>
+
+            <section id="dec26" class="entry">
+                <h3>26 - 28 Dec</h3>
+                <p>
+                    Tried to get perspective projection instead of isometric, but not too much success, decided to stay
+                    with
+                    isometric.
+                </p>
+                <img src="Raspberry pi 5/4cf1a7c46531153e20904d013aef3300.jpg" alt="Isometric projection"
+                    style="width: 100%; max-width: 400px; border-radius: 12px; margin-top: 24px;" />
+
             </section>
-            <section id="setup" class="entry">
-                <h2>Setup</h2>
-                <ul>
-                    <li>OS installation and configuration notes.</li>
-                    <li>Network setup and service deployment.</li>
-                    <li>Performance and compatibility findings.</li>
-                </ul>
+
+
+            <section id="dec29" class="entry">
+                <h3>29 - 31 Dec</h3>
+                <p></p>
+                Working with Bezier curves. Although I did not get too much working code. Learned a lot.
+                After dealing with a lot of problems with the triangulated model, decided to use the original 4x4 Bezier
+                patch data:
+                <p></p>
+
+                <img src="Raspberry pi 5/c0eeacdcc843ac7888ce185c4aded38f.jpg" alt="Bezier curve interpolation"
+                    style="width: 100%; max-width: 400px; border-radius: 12px; margin-top: 24px;" />
+                <p></p>
+                And now I have a nice interpolation
+                <a
+                    href="https://github.com/marianodominguez/3d_graphics_prog/blob/main/teapot/src/teapot_01.c">https://github.com/marianodominguez/3d_graphics_prog/blob/main/teapot/src/teapot_01.c</a>
+                <p></p>
             </section>
-            <section id="future" class="entry">
-                <h2>Future</h2>
-                <p>Outline what you want to build next with the Raspberry Pi 5 and how it connects to the broader site
-                    projects.</p>
+            <img src="Raspberry pi 5/879113147a8999e9311f2c0bfbaa164c.jpg" alt="Bezier curve interpolation"
+                style="width: 100%; max-width: 400px; border-radius: 12px; margin-top: 24px;" />
+            <img src="Raspberry pi 5/569e835e4481718f8e3d4e8148a2235c.jpg" alt="Bezier curve interpolation"
+                style="width: 100%; max-width: 400px; border-radius: 12px; margin-top: 24px;" />
             </section>
+
             <footer>Back to <a href="index.html">the main page</a>.</footer>
         </article>
     </main>
