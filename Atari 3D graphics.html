@@ -188,10 +188,11 @@
         <li><a href="#dec4">4-Dec</a></li>
         <li><a href="#dec5">5-Dec</a></li>
         <li><a href="#dec6">6-7 Dec</a></li>
+        <li><a href="#dec8">8 Dec</a></li>
       </ul>
     </aside>
 
-    <article class="content-card">
+    < class="content-card">
       <h1>Atari 3D graphics</h1>
       <p class="lead">A log of experiments exploring 3D graphics on the Atari, from curve stitching to cubes and
         floating-point math.</p>
@@ -238,7 +239,7 @@
         <p>This is probably the slowest rotating cube in history. I wrote a BASIC implementation to debug the rotation;
           some shearing is happening.</p>
         <div class="media-grid">
-          <img src="Atari 3D graphics/0c1f5e7d8a9b4e2f6c1a3b5e4d2f7c8e.jpg" alt="Rotating cube experiment" />
+          <img src="Atari 3D graphics/a2a6901caa9899c69ccac9d9a0ff364c.jpg" alt="Rotating cube experiment" />
           <img src="Atari 3D graphics/2e85c14d83a9cb06ef79546a2cfbe0e8.jpg" alt="Another rotating cube experiment" />
         </div>
       </section>
@@ -246,10 +247,68 @@
       <section id="dec6" class="entry">
         <h3>6-7 Dec</h3>
         <p>I realized I didn’t know how to multiply matrices, so I fixed the formula in the original C code.</p>
+
+        <div class="media-grid">
+          <img src="Atari 3D graphics/fd057fcfd6404d472fc358da643e3fb7.jpg" alt="Rotating cube experiment" />
+          <img src="Atari 3D graphics/469b02d3f9f2057d6c205d2b79ee0f06.jpg" alt="Another rotating cube experiment" />
+        </div>
+
       </section>
 
+      <section id="dec8" class="entry">
+        <h3>8 Dec</h3>
+        <p>Implemented a nice little routine to clear the screen. now use the wam routines to speed up the drawing</p>
+        <div class="media-grid">
+          <img src="Atari 3D graphics/bc778001caf4f48ac6e1df14f4af6485.jpg" alt="Rotating cube experiment" />
+          <img src="Atari 3D graphics/2f29f530f1c8959aeda91325562a67e6.jpg" alt="Another rotating cube experiment" />
+        </div>
+
+      </section>
+
+      <section id="dec9" class="entry">
+        <h3>9-10 Dec</h3>
+        <p>Implemented fast pixel routines. for some reason multiplying by 40 is not working</p>
+      </section>
+      <section id="dec11" class="entry">
+        <h3>11 Dec</h3>
+        <p>Implemented putpixel and line in c, as base to troubleshoot. not too much difference in performance.</p>
+      </section>
+
+      <section id="dec12" class="entry">
+        <h3>12-13 Dec</h3>
+        <p>So much going on that I could not update. Adapting the putpixel routine to 2 bytes included a lot of
+          debugging. I have a set pixel directly to video memory.</p>
+
+        Dealing with the arithmetic was tricky. ended up rewriting the y*40 routine.
+
+      </section>
+
+      <section id="dec14" class="entry">
+        <h3>14-15 Dec</h3>
+        <p>Implemented a fast line routine. I have a set pixel directly to video memory.</p>
+
+        Next step was to write the line in assembler. found a couple of routines already made
+        here: https://forums.atariage.com/topic/231690-known-fast-line-algorithms/
+        tried to port and integrate dr Sid implementation (in thread). moving from mad assembler to cc65 was not too
+        bad.
+        but not sure about the macros.
+
+
+        So mostly works, however , resolution and x coordinates are off. Rightmost triamgle should be in the middle
+
+        And it worked !
+
+        Next step : double buffer.
+
+      </section>
+
+
+
+
+
+
       <footer>Back to <a href="index.html">the main landing page</a>.</footer>
-    </article>
+      </article>
   </main>
 </body>
 
