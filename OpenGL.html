@@ -1,251 +1,72 @@
-<!DOCTYPE html>
-<html lang="en">
+---
+layout: default
+title: OpenGL Adventures
+---
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>OpenGL Adventures</title>
-    <style>
-        :root {
-            color-scheme: dark;
-            --bg: #07111f;
-            --panel: #101b30;
-            --panel-strong: #16253d;
-            --text: #f5f7ff;
-            --muted: #a6b0c5;
-            --accent: #64d7ff;
-        }
+<aside class="index-card" aria-label="Page index">
+    <h2>Index</h2>
+    <ul>
+        <li><a href="#basic">Basic OpenGL</a></li>
+        <li><a href="#teapot">Teapot wireframe</a></li>
+        <li><a href="#reflection">Reflection model</a></li>
+        <li><a href="#texture">Texture mapping</a></li>
+    </ul>
+</aside>
 
-        * {
-            box-sizing: border-box;
-        }
+<article class="content-card">
+    <h1>OpenGL Adventures</h1>
+    <p class="lead">Notes and demos exploring simple OpenGL programs: cubes, teapots, lighting and textures.</p>
 
-        body {
-            margin: 0;
-            font-family: Inter, "Segoe UI", Roboto, sans-serif;
-            background: linear-gradient(135deg, #07111f, #14233b 70%, #07111f);
-            color: var(--text);
-        }
+    <section id="basic" class="entry">
+        <h2>Basic OpenGL example</h2>
+        <p>The most basic example: a cube rendered from arrays of vertices and normals.</p>
+        <p><a href="https://github.com/marianodominguez/3d_graphics_prog/blob/main/gl/src/cube.c" target="_blank"
+                rel="noreferrer">Cube source on GitHub</a></p>
+        <div class="media-grid">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/xTBzC8BHPn8?si=RyrjV4WQsVAT5eoS"
+                title="Cube demo" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </section>
 
-        .site-header {
-            background: rgba(7, 17, 31, 0.95);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-            padding: 16px 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 16px;
-            position: sticky;
-            top: 0;
-            z-index: 10;
-        }
+    <section id="teapot" class="entry">
+        <h2>Teapot wireframe</h2>
+        <p>The Utah teapot reappears: model loading with precalculated normals and an initial diffuse lighting
+            shader.</p>
+        <p><a href="https://github.com/marianodominguez/3d_graphics_prog/blob/main/gl/src/teapot_diffuse.c"
+                target="_blank" rel="noreferrer">Teapot diffuse shader</a></p>
+        <div class="media-grid">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/PffgT-BnbgI?si=OEjMEO5VrLJdBQS-"
+                title="Teapot diffuse" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </section>
 
-        .site-header a {
-            color: var(--text);
-            text-decoration: none;
-        }
+    <section id="reflection" class="entry">
+        <h2>Reflection model</h2>
+        <p>Adding reflection terms to the light model to simulate specular highlights and improve material
+            appearance.</p>
+        <div class="media-grid">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/E7_sGBzSJqs?si=-6OuCZJZ9rsDzE-T"
+                title="Reflection demo" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </section>
 
-        .brand {
-            font-weight: 700;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-        }
+    <section id="texture" class="entry">
+        <h2>Texture mapping</h2>
+        <p>Applying simple textures; triangulation limitations are visible and next steps include Bezier
+            interpolation for smoother surfaces.</p>
+        <div class="media-grid">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/VBRxtj5fWg0?si=Sjkj4h11kM0fX5iX"
+                title="Texture mapping" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </section>
 
-        .site-nav {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        .site-nav a {
-            color: var(--muted);
-            padding: 6px 10px;
-            border-radius: 999px;
-        }
-
-        .site-nav a:hover {
-            color: var(--text);
-            background: rgba(255, 255, 255, 0.08);
-        }
-
-        .layout {
-            display: grid;
-            grid-template-columns: 240px minmax(0, 1fr);
-            gap: 24px;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 24px;
-        }
-
-        .index-card,
-        .content-card {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 18px;
-            padding: 20px;
-            box-shadow: 0 14px 36px rgba(0, 0, 0, 0.18);
-        }
-
-        .index-card h2 {
-            margin-top: 0;
-            font-size: 1.1rem;
-        }
-
-        .index-card ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: grid;
-            gap: 8px;
-        }
-
-        .index-card a {
-            color: var(--accent);
-            text-decoration: none;
-        }
-
-        .content-card h1 {
-            margin-top: 0;
-            margin-bottom: 8px;
-            font-size: 2rem;
-        }
-
-        .lead {
-            color: var(--muted);
-            margin-top: 0;
-            margin-bottom: 24px;
-        }
-
-        .entry {
-            margin-bottom: 28px;
-        }
-
-        .entry h2,
-        .entry h3 {
-            margin-bottom: 8px;
-        }
-
-        .media-grid {
-            display: grid;
-            gap: 16px;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            margin-top: 12px;
-        }
-
-        img,
-        iframe {
-            width: 100%;
-            border-radius: 12px;
-            border: 0;
-            background: #0c1426;
-        }
-
-        .note {
-            color: var(--muted);
-        }
-
-        footer {
-            margin-top: 24px;
-            color: var(--muted);
-            font-size: 0.95rem;
-        }
-
-        @media (max-width: 840px) {
-            .layout {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
-</head>
-
-<body>
-    <header class="site-header">
-        <a class="brand" href="index.html">Papá Robot</a>
-        <nav class="site-nav" aria-label="Primary navigation">
-            <a href="index.html">Home</a>
-            <a href="Atari 3D graphics.html">Atari 3D graphics</a>
-            <a href="Zx Spectrum Bot.html">ZX Spectrum Bot</a>
-            <a href="Bataroo.html">Bataroo</a>
-            <a href="Atari8bit bot mastodon.html">Atari8bit Bot Mastodon</a>
-            <a href="OpenGL.html">OpenGL</a>
-            <a href="more_3d_graphics.html">More 3D graphics</a>
-            <a href="Tacobot Online.html">Tacobot Online</a>
-            <a href="Fujinet server.html">Fujinet server</a>
-            <a href="Raspberry pi 5.html">Graphics in Raspberry Pi 5</a>
-            <a href="Jumpy Dino.html">Jumpy Dino</a>
-            <a href="The return of TACOBOT.html">TACOBOT</a>
-        </nav>
-    </header>
-
-    <main class="layout">
-        <aside class="index-card" aria-label="Page index">
-            <h2>Index</h2>
-            <ul>
-                <li><a href="#basic">Basic OpenGL</a></li>
-                <li><a href="#teapot">Teapot wireframe</a></li>
-                <li><a href="#reflection">Reflection model</a></li>
-                <li><a href="#texture">Texture mapping</a></li>
-            </ul>
-        </aside>
-
-        <article class="content-card">
-            <h1>OpenGL Adventures</h1>
-            <p class="lead">Notes and demos exploring simple OpenGL programs: cubes, teapots, lighting and textures.</p>
-
-            <section id="basic" class="entry">
-                <h2>Basic OpenGL example</h2>
-                <p>The most basic example: a cube rendered from arrays of vertices and normals.</p>
-                <p><a href="https://github.com/marianodominguez/3d_graphics_prog/blob/main/gl/src/cube.c"
-                        target="_blank" rel="noreferrer">Cube source on GitHub</a></p>
-                <div class="media-grid">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/xTBzC8BHPn8?si=RyrjV4WQsVAT5eoS"
-                        title="Cube demo" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
-            </section>
-
-            <section id="teapot" class="entry">
-                <h2>Teapot wireframe</h2>
-                <p>The Utah teapot reappears: model loading with precalculated normals and an initial diffuse lighting
-                    shader.</p>
-                <p><a href="https://github.com/marianodominguez/3d_graphics_prog/blob/main/gl/src/teapot_diffuse.c"
-                        target="_blank" rel="noreferrer">Teapot diffuse shader</a></p>
-                <div class="media-grid">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/PffgT-BnbgI?si=OEjMEO5VrLJdBQS-"
-                        title="Teapot diffuse" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
-            </section>
-
-            <section id="reflection" class="entry">
-                <h2>Reflection model</h2>
-                <p>Adding reflection terms to the light model to simulate specular highlights and improve material
-                    appearance.</p>
-                <div class="media-grid">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/E7_sGBzSJqs?si=-6OuCZJZ9rsDzE-T"
-                        title="Reflection demo" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
-            </section>
-
-            <section id="texture" class="entry">
-                <h2>Texture mapping</h2>
-                <p>Applying simple textures; triangulation limitations are visible and next steps include Bezier
-                    interpolation for smoother surfaces.</p>
-                <div class="media-grid">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/VBRxtj5fWg0?si=Sjkj4h11kM0fX5iX"
-                        title="Texture mapping" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
-            </section>
-
-            <footer>Back to <a href="index.html">the main page</a>.</footer>
-        </article>
-    </main>
-</body>
-
-</html>
+    <footer>Back to <a href="index.html">the main page</a>.</footer>
+</article>

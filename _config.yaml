@@ -1,0 +1,31 @@
+title: Papá Robot
+description: A blog about retro computing and programming
+url: "https://www.papa-robot.xyz"
+theme_color: "#72f3ff"
+
+# nav items usable in loops in your layout
+nav:
+  - title: Atari 3D Graphics
+    url: "Atari 3D graphics.html"
+  - title: More 3D Graphics
+    url: "more_3d_graphics.html"
+  - title: The Return of TACOBOT
+    url: "The return of TACOBOT.html"
+  - title: Tacobot Online
+    url: "Tacobot Online.html"
+  - title: Jumpy Dino
+    url: "Jumpy Dino.html"
+  - title: Bataroo
+    url: "Bataroo.html"
+  - title: Fujinet Server
+    url: "Fujinet server.html"
+  - title: Graphics in Raspberry Pi 5
+    url: "Raspberry pi 5.html"
+  - title: Atari8bit Bot
+    url: "Atari8bit bot mastodon.html"
+  - title: Zx Spectrum Bot
+    url: "Zx Spectrum Bot.html"
+  - title: OpenGL
+    url: "OpenGL.html"
+  - title: Home
+    url: "index.html"
